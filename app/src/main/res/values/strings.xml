@@ -3,4 +3,5 @@
     <string name="tab_learning_leaders">Learning Leaders</string>
     <string name="tab_skill_iq_leaders">Skill IQ Leaders</string>
 <string name="hello_blank_fragment">Hello fragment</string>
+    <string name="btnSubmit">Submit</string>
 </resources>
