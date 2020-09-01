@@ -33,6 +33,7 @@
         android:layout_below="@id/toolbar"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        app:tabTextAppearance="@style/CustomTextAppearanceTab"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <androidx.viewpager.widget.ViewPager
