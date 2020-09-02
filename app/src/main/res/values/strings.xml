@@ -4,4 +4,6 @@
     <string name="tab_skill_iq_leaders">Skill IQ Leaders</string>
     <string name="hello_blank_fragment">Hello fragment</string>
     <string name="btnSubmit">Submit</string>
+    <string name="skill_learning">322 learning hours, Kenya</string>
+    <string name="john_doe">John Doe</string>
 </resources>
