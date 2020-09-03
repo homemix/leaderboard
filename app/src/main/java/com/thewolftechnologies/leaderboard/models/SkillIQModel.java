@@ -1,51 +1,40 @@
 package com.thewolftechnologies.leaderboard.models;
 
 public class SkillIQModel {
-
-    String name;
-    String score;
-    String country;
-    String badgeUrl;
+    String nameIQ;
+    String IQCountry;
+    String badgeUrlIQ;
 
     public SkillIQModel() {
     }
 
-    public SkillIQModel(String name, String score, String country, String badgeUrl) {
-        this.name = name;
-        this.score = score;
-        this.country = country;
-        this.badgeUrl = badgeUrl;
+    public SkillIQModel(String name, String IQCountry, String badgeUrl) {
+        this.nameIQ = name;
+        this.IQCountry = IQCountry;
+        this.badgeUrlIQ = badgeUrl;
     }
 
-    public String getName() {
-        return name;
+    public String getNameIQ() {
+        return nameIQ;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameIQ(String nameIQ) {
+        this.nameIQ = nameIQ;
     }
 
-    public String getScore() {
-        return score;
+    public String getIQCountry() {
+        return IQCountry;
     }
 
-    public void setScore(String score) {
-        this.score = score;
+    public void setIQCountry(String IQCountry) {
+        this.IQCountry = IQCountry;
     }
 
-    public String getCountry() {
-        return country;
+    public String getBadgeUrlIQ() {
+        return badgeUrlIQ;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getBadgeUrl() {
-        return badgeUrl;
-    }
-
-    public void setBadgeUrl(String badge) {
-        this.badgeUrl = badge;
+    public void setBadgeUrlIQ(String badgeUrlIQ) {
+        this.badgeUrlIQ = badgeUrlIQ;
     }
 }
