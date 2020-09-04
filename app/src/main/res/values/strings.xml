@@ -6,4 +6,7 @@
     <string name="btnSubmit">Submit</string>
     <string name="skill_learning">322 learning hours, Kenya</string>
     <string name="john_doe">John Doe</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_email_address">Email Address</string>
 </resources>
