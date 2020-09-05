@@ -1,9 +1,12 @@
 package com.thewolftechnologies.leaderboard.ui.main;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.thewolftechnologies.leaderboard.MainActivity;
 import com.thewolftechnologies.leaderboard.R;
 import com.thewolftechnologies.leaderboard.utills.Common;
 
@@ -62,7 +66,7 @@ public class SubmitProject extends AppCompatActivity {
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(SubmitProject.this);
                 builder.setMessage("Are you sure ?")
-                        //.setTitle("Delete Entry")
+                        .setCancelable(true)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -75,7 +79,7 @@ public class SubmitProject extends AppCompatActivity {
                                     Toast.makeText(SubmitProject.this, "Fill all fields", Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 } else {
-                                   postSubmitProject();
+                                    postSubmitProject();
                                 }
                             }
                         })
@@ -85,13 +89,32 @@ public class SubmitProject extends AppCompatActivity {
                                 dialog.dismiss();
                             }
                         });
-
                 AlertDialog dialog = builder.create();
 
                 dialog.show();
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(SubmitProject.this.getColor(R.color.colorOrange));
             }
         });
+    }
+
+    private void customAlertDialog(final int state) {
+
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+
+                if (state == 1) {
+                    Dialog dialog = new Dialog(SubmitProject.this);
+                    dialog.setContentView(R.layout.custom_alert_done);
+                    dialog.show();
+                } else {
+                    Dialog dialog = new Dialog(SubmitProject.this);
+                    dialog.setContentView(R.layout.custom_alert_warning);
+                    dialog.show();
+                }
+            }
+        }, 9000);
+
     }
 
     private void postSubmitProject() {
@@ -108,7 +131,13 @@ public class SubmitProject extends AppCompatActivity {
                         Log.d("Response", response);
                         progressDialog.dismiss();
 
+                        // post state
+                        // 0 = fail
+                        // 1= success
+                        customAlertDialog(1);
 
+                      Intent intent = new Intent(SubmitProject.this, MainActivity.class);
+                      startActivity(intent);
                     }
                 },
                 new Response.ErrorListener() {
@@ -117,13 +146,13 @@ public class SubmitProject extends AppCompatActivity {
                         // error
                         progressDialog.dismiss();
                         Log.d("Error.Response", "" + error);
-
+                        customAlertDialog(0);
                     }
                 }
         ) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put(emailAddress, et_email.getText().toString());
                 params.put(firstName, et_first_name.getText().toString());
                 params.put(lastName, et_last_name.getText().toString());
